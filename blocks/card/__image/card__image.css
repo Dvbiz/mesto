@@ -1,0 +1,8 @@
+.card__image {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  -o-object-position: top;
+  object-position: top;
+}

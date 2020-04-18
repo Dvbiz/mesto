@@ -1,0 +1,15 @@
+.popup__button_type_save {
+  min-height: 51px;
+  border: 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 45px;
+  background-color: #000000;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.popup__button_type_save:hover {
+  background-color: #313131;
+}

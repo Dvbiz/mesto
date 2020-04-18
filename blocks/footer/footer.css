@@ -1,0 +1,16 @@
+@import url(./__copyright/footer__copyright.css);
+
+.footer {
+  font-family: 'Inter', Arial, sans-serif;
+  width: calc(100% - 31%);
+  margin: auto;
+  padding-top: 3px;
+}
+
+@media (max-width: 1000px) {
+  .footer {
+    width: calc(100% - 13%);
+    padding:0 ;
+  }
+  }
+

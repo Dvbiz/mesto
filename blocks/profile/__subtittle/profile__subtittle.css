@@ -1,0 +1,18 @@
+.profile__subtittle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 6px auto 0;
+}
+@media (max-width: 860px) {
+  .profile__subtittle {
+    text-align: center;
+  }
+}
+@media (max-width: 394px) {
+  .profile__subtittle {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 3px;
+  }
+}

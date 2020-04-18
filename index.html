@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="author" content="Денис Васильев" />
+  <link rel="stylesheet" href="pages/index.css" />
+  <title>Место</title>
+</head>
+
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="./image/Vector.svg" alt="Логотип Проекта" class="header__logo" />
+    </header>
+
+    <main class="main">
+      <section class="profile">
+        <div class="profile__container">
+          <img src="./image/custo.jpg" alt="Жак-Ив Кусто" class="profile__avatar" />
+          <div class="profile__text">
+            <h1 class="profile__tittle">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__button-edit animation-buton"></button>
+            <p class="profile__subtittle">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__button-add animation-buton"></button>
+      </section>
+      <section class="element">
+        <figure class="card">
+          <img src="./image/karachaevsk.jpg" alt="Карачаевск" class="card__image" />
+          <figcaption class="card__description">
+            <h3 class="card__title">Карачаевск</h3>
+            <button type="button" class="card__button-like" aria-label="Like"></button>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <img src="./image/elbrus.jpg" alt="Гора Эльбрус" class="card__image" />
+          <figcaption class="card__description">
+            <h3 class="card__title">Гора Эльбрус</h3>
+            <button type="button" class="card__button-like" aria-label="Like"></button>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <img src="./image/dombay.jpg" alt="Домбай" class="card__image" />
+          <figcaption class="card__description">
+            <h3 class="card__title">Домбай</h3>
+            <button type="button" class="card__button-like" aria-label="Like"></button>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <img src="./image/elbrus.jpg" alt="Гора Эльбрус" class="card__image" />
+          <figcaption class="card__description">
+            <h3 class="card__title">Гора Эльбрус</h3>
+            <button type="button" class="card__button-like" aria-label="Like"></button>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <img src="./image/dombay.jpg" alt="Домбай" class="card__image" />
+          <figcaption class="card__description">
+            <h3 class="card__title">Домбай</h3>
+            <button type="button" class="card__button-like" aria-label="Like"></button>
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <img src="./image/karachaevsk.jpg" alt="Карачаевск" class="card__image" />
+          <figcaption class="card__description">
+            <h3 class="card__title">Карачаевск</h3>
+            <button type="button" class="card__button-like" aria-label="Like"></button>
+          </figcaption>
+        </figure>
+      </section>
+      <section class="popup popup_closed">
+        <form class="popup__container" name="formElement" method="get" action="#">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <input name="inputName" type="text" required placeholder="Имя" class="popup__input popup__input_name" />
+          <input name="inputDescription" required placeholder="Профессия" type="text"
+            class="popup__input popup__input_description" />
+          <button type="submit" class="popup__button popup__button_type_save">
+            Сохранить
+          </button>
+          <button type="reset" class="popup__button popup__button_type_close animation-buton"></button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <script src="./scripts/script.js"></script>
+</body>
+
+</html>

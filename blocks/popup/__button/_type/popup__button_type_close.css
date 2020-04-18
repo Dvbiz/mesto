@@ -1,0 +1,23 @@
+.popup__button_type_close {
+  background-image: url(../../../../image/close_icon.svg);
+  width: 32px;
+  height: 33px;
+  position: absolute;
+  top: -34px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  right: -31px;
+  border: 0;
+  color: black;
+}
+@media (max-width: 500px) {
+  .popup__button_type_close {
+    width: 25px;
+    height: 25px;
+    top: 5px;
+    right: 5px;
+    background-image: url(../../../../image/close_icon.png);
+  }
+}

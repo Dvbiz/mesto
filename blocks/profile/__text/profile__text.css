@@ -1,0 +1,15 @@
+.profile__text {
+  padding-left: 31px;
+  display: inline;
+}
+@media (max-width: 860px) {
+  .profile__text {
+    text-align: center;
+  }
+}
+@media (max-width: 554px) {
+  .profile__text {
+    margin: auto;
+    padding: 0;
+  }
+}

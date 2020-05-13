@@ -10,28 +10,28 @@ let profileTittle = profile.querySelector('.profile__tittle');
 let profileSubtittle = profile.querySelector('.profile__subtittle');
 const elem = document.querySelector('.element');
 const initialCards = [{
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Колизей в Риме',
+    link: 'https://images.unsplash.com/photo-1571207563769-343a4092c586?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMDk0fQ&auto=format&fit=crop&w=634&q=80'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Мачу-Пикчу',
+    link: 'https://images.unsplash.com/photo-1567597243073-2d274aabecec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Куала-Лумпур, Малайзия',
+    link: 'https://images.unsplash.com/photo-1589260097587-942004ad2b3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Оперный театр в Чжухае',
+    link: 'https://images.unsplash.com/photo-1568001731724-c868c383b0c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Чжанцзяцзе, Китай',
+    link: 'https://images.unsplash.com/photo-1546881963-ac8d67aee789?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=627&q=80'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Сидней',
+    link: 'https://images.unsplash.com/photo-1548565494-3621affe632f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
   }
 ];
 const card = document.querySelector('#elementCard').content;

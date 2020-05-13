@@ -29,7 +29,16 @@
         <button class="profile__button-add animation-buton"></button>
       </section>
       <section class="element">
-        <figure class="card">
+        <template id="elementCard">
+          <figure class="card">
+            <img class="card__image" />
+            <figcaption class="card__description">
+              <h3 class="card__title"></h3>
+              <button type="button" class="card__button-like" aria-label="Like"></button>
+            </figcaption>
+          </figure>
+        </template>
+        <!-- <figure class="card"> 
           <img src="./image/karachaevsk.jpg" alt="Карачаевск" class="card__image" />
           <figcaption class="card__description">
             <h3 class="card__title">Карачаевск</h3>
@@ -70,7 +79,7 @@
             <h3 class="card__title">Карачаевск</h3>
             <button type="button" class="card__button-like" aria-label="Like"></button>
           </figcaption>
-        </figure>
+        </figure>-->
       </section>
       <section class="popup popup_closed">
         <form class="popup__container" name="formElement" method="get" action="#">

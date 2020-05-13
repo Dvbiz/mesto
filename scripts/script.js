@@ -8,56 +8,66 @@ let inputName = formElement.querySelector('.popup__input_name');
 let inputDescription = formElement.querySelector('.popup__input_description');
 let profileTittle = profile.querySelector('.profile__tittle');
 let profileSubtittle = profile.querySelector('.profile__subtittle');
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
+const elem = document.querySelector('.element');
+const initialCards = [{
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
 ];
+const card = document.querySelector('#elementCard').content;
+initialCards.forEach(function (el) {
+  const cardElement = card.cloneNode(true);
+  cardElement.querySelector('.card__image').src = el.link;
+  cardElement.querySelector('.card__title').textContent = el.name;
+  elem.append(cardElement);
+});
+
 function edit() {
-    popup.classList.remove('popup_closed');
-    popup.classList.add('popup_opened');
-    textAdd();
+  popup.classList.remove('popup_closed');
+  popup.classList.add('popup_opened');
+  textAdd();
 }
+
 function close() {
-    popup.classList.remove('popup_opened');
-    popup.classList.add('popup_closed');
+  popup.classList.remove('popup_opened');
+  popup.classList.add('popup_closed');
 }
+
 function textAdd() {
-    let textTittle = profileTittle.textContent;
-    let textSubtittle = profileSubtittle.textContent;
-    inputName.value = `${textTittle}`;
-    inputDescription.value = `${textSubtittle}`;
+  let textTittle = profileTittle.textContent;
+  let textSubtittle = profileSubtittle.textContent;
+  inputName.value = `${textTittle}`;
+  inputDescription.value = `${textSubtittle}`;
 }
+
 function formSubmitHandler(evt) {
-    evt.preventDefault();
-    let inputNameAdd = inputName.value;
-    let inputDescriptionAdd = inputDescription.value;
-    profileTittle.textContent = `${inputNameAdd}`;
-    profileSubtittle.textContent = `${inputDescriptionAdd}`;
-    close();
+  evt.preventDefault();
+  let inputNameAdd = inputName.value;
+  let inputDescriptionAdd = inputDescription.value;
+  profileTittle.textContent = `${inputNameAdd}`;
+  profileSubtittle.textContent = `${inputDescriptionAdd}`;
+  close();
 }
 editButton.addEventListener('click', edit);
 closeButton.addEventListener('click', close);
 formElement.addEventListener('submit', formSubmitHandler);
-

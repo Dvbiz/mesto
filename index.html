@@ -38,50 +38,8 @@
             </figcaption>
           </figure>
         </template>
-        <!-- <figure class="card"> 
-          <img src="./image/karachaevsk.jpg" alt="Карачаевск" class="card__image" />
-          <figcaption class="card__description">
-            <h3 class="card__title">Карачаевск</h3>
-            <button type="button" class="card__button-like" aria-label="Like"></button>
-          </figcaption>
-        </figure>
-        <figure class="card">
-          <img src="./image/elbrus.jpg" alt="Гора Эльбрус" class="card__image" />
-          <figcaption class="card__description">
-            <h3 class="card__title">Гора Эльбрус</h3>
-            <button type="button" class="card__button-like" aria-label="Like"></button>
-          </figcaption>
-        </figure>
-        <figure class="card">
-          <img src="./image/dombay.jpg" alt="Домбай" class="card__image" />
-          <figcaption class="card__description">
-            <h3 class="card__title">Домбай</h3>
-            <button type="button" class="card__button-like" aria-label="Like"></button>
-          </figcaption>
-        </figure>
-        <figure class="card">
-          <img src="./image/elbrus.jpg" alt="Гора Эльбрус" class="card__image" />
-          <figcaption class="card__description">
-            <h3 class="card__title">Гора Эльбрус</h3>
-            <button type="button" class="card__button-like" aria-label="Like"></button>
-          </figcaption>
-        </figure>
-        <figure class="card">
-          <img src="./image/dombay.jpg" alt="Домбай" class="card__image" />
-          <figcaption class="card__description">
-            <h3 class="card__title">Домбай</h3>
-            <button type="button" class="card__button-like" aria-label="Like"></button>
-          </figcaption>
-        </figure>
-        <figure class="card">
-          <img src="./image/karachaevsk.jpg" alt="Карачаевск" class="card__image" />
-          <figcaption class="card__description">
-            <h3 class="card__title">Карачаевск</h3>
-            <button type="button" class="card__button-like" aria-label="Like"></button>
-          </figcaption>
-        </figure>-->
       </section>
-      <section class="popup popup_closed">
+      <section class="popup popup_closed" id="popup_edit">
         <form class="popup__container" name="formElement" method="get" action="#">
           <h3 class="popup__title">Редактировать профиль</h3>
           <input name="inputName" type="text" required placeholder="Имя" class="popup__input popup__input_name" />
@@ -90,7 +48,19 @@
           <button type="submit" class="popup__button popup__button_type_save">
             Сохранить
           </button>
-          <button type="reset" class="popup__button popup__button_type_close animation-buton"></button>
+          <button type="reset" class="popup__button popup__button_type_close animation-buton" id="editClose"></button>
+        </form>
+      </section>
+      <section class="popup popup_closed" id="popup-add">
+        <form class="popup__container" name="formElement" method="get" action="#" id="newElem">
+          <h3 class="popup__title">Новое место</h3>
+          <input name="inputName" type="text" required placeholder="Название" class="popup__input popup__input_place" />
+          <input name="inputDescription" required placeholder="Ссылка на картинку" type="text"
+            class="popup__input popup__input_link" />
+          <button type="submit" class="popup__button popup__button_type_save">
+            Сохранить
+          </button>
+          <button type="reset" class="popup__button popup__button_type_close animation-buton" id="addClose"></button>
         </form>
       </section>
     </main>

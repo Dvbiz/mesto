@@ -1,8 +1,12 @@
-const popup = document.querySelector('.popup');
-const closeButton = popup.querySelector('.popup__button_type_close');
+const popupEdit = document.querySelector('#popup_edit');
+const popupAdd = document.querySelector('#popup-add')
+const closeEdit = document.querySelector('#editClose');
+const closeAdd = document.querySelector('#addClose')
 const profile = document.querySelector('.profile');
 const editButton = profile.querySelector('.profile__button-edit');
+const addButton = document.querySelector('.profile__button-add');
 const formElement = document.querySelector('.popup__container');
+const newElem = document.querySelector('#newElem');
 const saveButton = formElement.querySelector('.popup__button_type_save');
 let inputName = formElement.querySelector('.popup__input_name');
 let inputDescription = formElement.querySelector('.popup__input_description');
@@ -42,16 +46,8 @@ initialCards.forEach(function (el) {
   elem.append(cardElement);
 });
 
-
-function edit() {
-  popup.classList.remove('popup_closed');
-  popup.classList.add('popup_opened');
-  textAdd();
-}
-
-function close() {
-  popup.classList.remove('popup_opened');
-  popup.classList.add('popup_closed');
+function openPopup(popup){
+  popup.classList.toggle('popup_opened')
 }
 
 function textAdd() {
@@ -67,8 +63,24 @@ function formSubmitHandler(evt) {
   let inputDescriptionAdd = inputDescription.value;
   profileTittle.textContent = `${inputNameAdd}`;
   profileSubtittle.textContent = `${inputDescriptionAdd}`;
-  close();
+  openPopup(popupEdit);
 }
-editButton.addEventListener('click', edit);
-closeButton.addEventListener('click', close);
+
+function newCardHandler(evt){ 
+  evt.preventDefault();
+  const newCardElement = card.cloneNode(true);
+  let inputPlaceAdd = document.querySelector('.popup__input_place');
+  let inputLinkAdd = document.querySelector('.popup__input_link');
+  newCardElement.querySelector('.card__image').src = inputLinkAdd.value;
+  newCardElement.querySelector('.card__title').textContent = inputPlaceAdd.value;
+  elem.prepend(newCardElement);
+  openPopup(popupAdd);
+}
+
+editButton.addEventListener('click',() => openPopup(popupEdit) & textAdd());
+addButton.addEventListener('click', () => openPopup(popupAdd));
+closeEdit.addEventListener('click', () => openPopup(popupEdit));
+closeAdd.addEventListener('click', () => openPopup(popupAdd));
 formElement.addEventListener('submit', formSubmitHandler);
+newElem.addEventListener('submit', newCardHandler);
+

@@ -42,6 +42,7 @@ initialCards.forEach(function (el) {
   elem.append(cardElement);
 });
 
+
 function edit() {
   popup.classList.remove('popup_closed');
   popup.classList.add('popup_opened');

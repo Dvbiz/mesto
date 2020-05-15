@@ -38,11 +38,18 @@ const initialCards = [{
     link: 'https://images.unsplash.com/photo-1548565494-3621affe632f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
   }
 ];
+
+const like = (evt) => {
+  evt.target.classList.toggle('card__button-like_active');
+};
+
 const card = document.querySelector('#elementCard').content;
 initialCards.forEach(function (el) {
   const cardElement = card.cloneNode(true);
   cardElement.querySelector('.card__image').src = el.link;
   cardElement.querySelector('.card__title').textContent = el.name;
+  const cardLike = cardElement.querySelector('.card__button-like');
+  cardLike.addEventListener('click', like);
   elem.append(cardElement);
 });
 
@@ -73,9 +80,12 @@ function newCardHandler(evt){
   let inputLinkAdd = document.querySelector('.popup__input_link');
   newCardElement.querySelector('.card__image').src = inputLinkAdd.value;
   newCardElement.querySelector('.card__title').textContent = inputPlaceAdd.value;
+  const newCardLike = newCardElement.querySelector('.card__button-like');
   elem.prepend(newCardElement);
+  newCardLike.addEventListener('click', like);
   openPopup(popupAdd);
 }
+
 
 editButton.addEventListener('click',() => openPopup(popupEdit) & textAdd());
 addButton.addEventListener('click', () => openPopup(popupAdd));

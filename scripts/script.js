@@ -1,7 +1,8 @@
 const popupEdit = document.querySelector('#popup_edit');
 const popupAdd = document.querySelector('#popup-add')
 const closeEdit = document.querySelector('#editClose');
-const closeAdd = document.querySelector('#addClose')
+const closeAdd = document.querySelector('#addClose');
+const closeImg = document.querySelector('#imgClose');
 const profile = document.querySelector('.profile');
 const editButton = profile.querySelector('.profile__button-edit');
 const addButton = document.querySelector('.profile__button-add');
@@ -12,48 +13,15 @@ let inputName = formElement.querySelector('.popup__input_name');
 let inputDescription = formElement.querySelector('.popup__input_description');
 let profileTittle = profile.querySelector('.profile__tittle');
 let profileSubtittle = profile.querySelector('.profile__subtittle');
-const elem = document.querySelector('.element');
-const initialCards = [{
-    name: 'Колизей в Риме',
-    link: 'https://images.unsplash.com/photo-1571207563769-343a4092c586?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMDk0fQ&auto=format&fit=crop&w=634&q=80'
-  },
-  {
-    name: 'Мачу-Пикчу',
-    link: 'https://images.unsplash.com/photo-1567597243073-2d274aabecec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-  },
-  {
-    name: 'Куала-Лумпур, Малайзия',
-    link: 'https://images.unsplash.com/photo-1589260097587-942004ad2b3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-  },
-  {
-    name: 'Оперный театр в Чжухае',
-    link: 'https://images.unsplash.com/photo-1568001731724-c868c383b0c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80'
-  },
-  {
-    name: 'Чжанцзяцзе, Китай',
-    link: 'https://images.unsplash.com/photo-1546881963-ac8d67aee789?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=627&q=80'
-  },
-  {
-    name: 'Сидней',
-    link: 'https://images.unsplash.com/photo-1548565494-3621affe632f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
-  }
-];
+const elem = document.querySelector('#elementCard').content;
+const element = document.querySelector('.element');
+const popupCardPlace = document.querySelector('.popup__input_place');
+const popupCardLink = document.querySelector('.popup__input_link');
+const popupImg = document.querySelector('#image');
+const popupImgFull = document.querySelector('.popup__image_fullscreen');
+const popupImgText = document.querySelector('.popup__image_text');
 
-const like = (evt) => {
-  evt.target.classList.toggle('card__button-like_active');
-};
-
-const card = document.querySelector('#elementCard').content;
-initialCards.forEach(function (el) {
-  const cardElement = card.cloneNode(true);
-  cardElement.querySelector('.card__image').src = el.link;
-  cardElement.querySelector('.card__title').textContent = el.name;
-  const cardLike = cardElement.querySelector('.card__button-like');
-  cardLike.addEventListener('click', like);
-  elem.append(cardElement);
-});
-
-function openPopup(popup){
+function openPopup(popup) {
   popup.classList.toggle('popup_opened')
 }
 
@@ -72,25 +40,56 @@ function formSubmitHandler(evt) {
   profileSubtittle.textContent = `${inputDescriptionAdd}`;
   openPopup(popupEdit);
 }
+const openImage = (event) => {
+  popupImgFull.src = event.target.src;
+  popupImgText.textContent = event.target.alt;
+  openPopup(popupImg);
+};
 
-function newCardHandler(evt){ 
-  evt.preventDefault();
-  const newCardElement = card.cloneNode(true);
-  let inputPlaceAdd = document.querySelector('.popup__input_place');
-  let inputLinkAdd = document.querySelector('.popup__input_link');
-  newCardElement.querySelector('.card__image').src = inputLinkAdd.value;
-  newCardElement.querySelector('.card__title').textContent = inputPlaceAdd.value;
-  const newCardLike = newCardElement.querySelector('.card__button-like');
-  elem.prepend(newCardElement);
-  newCardLike.addEventListener('click', like);
-  openPopup(popupAdd);
+const like = (evt) => {
+  evt.target.classList.toggle('card__button-like_active');
+};
+
+const deleteCard = function (cardCopy, cardLike, cardImage) {
+  cardLike.removeEventListener('click', cardLike);
+  cardImage.removeEventListener('click', cardImage);
+  cardCopy.remove();
+};
+
+function newCard(name, image) {
+  const cardCopy = elem.firstElementChild.cloneNode(true);
+  const cardImage = cardCopy.querySelector('.card__image');
+  const cardTitle = cardCopy.querySelector('.card__title');
+  const cardLike = cardCopy.querySelector('.card__button-like');
+  const cardDelete = cardCopy.querySelector('.card__delete');
+  cardImage.src = image;
+  cardImage.alt = name;
+  cardTitle.textContent = name;
+  cardLike.addEventListener('click', like);
+  cardImage.addEventListener('click', openImage);
+  cardDelete.addEventListener('click', () => deleteCard(cardCopy, cardLike, cardImage), {
+    once: true
+  });
+  return cardCopy;
 }
 
+const AddCards = function (item) {
+  element.append(newCard(item.name, item.link));
+};
 
-editButton.addEventListener('click',() => openPopup(popupEdit) & textAdd());
+function NewAddForm(event) {
+  event.preventDefault();
+  openPopup(popupAdd);
+  element.prepend(newCard(popupCardPlace.value, popupCardLink.value));
+  popupCardPlace.value = '';
+  popupCardLink.value = '';
+};
+
+initialCards.forEach(AddCards);
+editButton.addEventListener('click', () => openPopup(popupEdit) & textAdd());
 addButton.addEventListener('click', () => openPopup(popupAdd));
+newElem.addEventListener('submit', NewAddForm)
 closeEdit.addEventListener('click', () => openPopup(popupEdit));
 closeAdd.addEventListener('click', () => openPopup(popupAdd));
+closeImg.addEventListener('click', () => openPopup(popupImg));
 formElement.addEventListener('submit', formSubmitHandler);
-newElem.addEventListener('submit', newCardHandler);
-

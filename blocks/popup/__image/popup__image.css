@@ -1,0 +1,6 @@
+@import url(./_fullscreen/popup__image_fullscreen.css);
+@import url(./_text/popup__image_text.css);
+.popup__image {
+  margin: auto;
+  position: relative;
+}

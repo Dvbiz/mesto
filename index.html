@@ -32,14 +32,15 @@
         <template id="elementCard">
           <figure class="card">
             <img class="card__image" />
+            <button type="button" class="card__delete animation-buton"></button>
             <figcaption class="card__description">
               <h3 class="card__title"></h3>
-              <button type="button" class="card__button-like" aria-label="Like"></button>
+              <button type="button" class="card__button-like animation-buton" aria-label="Like"></button>
             </figcaption>
           </figure>
         </template>
       </section>
-      <section class="popup popup_closed" id="popup_edit">
+      <section class="popup popup_opacity" id="popup_edit">
         <form class="popup__container" name="formElement" method="get" action="#">
           <h3 class="popup__title">Редактировать профиль</h3>
           <input name="inputName" type="text" required placeholder="Имя" class="popup__input popup__input_name" />
@@ -51,7 +52,7 @@
           <button type="reset" class="popup__button popup__button_type_close animation-buton" id="editClose"></button>
         </form>
       </section>
-      <section class="popup popup_closed" id="popup-add">
+      <section class="popup popup_opacity" id="popup-add">
         <form class="popup__container" name="formElement" method="get" action="#" id="newElem">
           <h3 class="popup__title">Новое место</h3>
           <input name="inputName" type="text" required placeholder="Название" class="popup__input popup__input_place" />
@@ -63,12 +64,20 @@
           <button type="reset" class="popup__button popup__button_type_close animation-buton" id="addClose"></button>
         </form>
       </section>
+      <section class="popup popup_opacity-image" id="image">
+        <div class="popup__image">
+          <button class="popup__button_type_close animation-buton" type="reset" id="imgClose"></button>
+          <img class="popup__image_fullscreen" src="#" alt="">
+          <p class="popup__image_text"></p>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+  <script src="./scripts/elements.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 

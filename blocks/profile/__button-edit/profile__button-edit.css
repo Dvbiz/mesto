@@ -10,6 +10,12 @@
   margin-left: 17px;
   background-color: black;
   cursor: pointer;
+  padding-top: 21px;
+}
+@media (max-width: 1000px){
+  .profile__button-edit{
+    padding-top: 15px;
+  }
 }
 
 @media (max-width: 394px) {

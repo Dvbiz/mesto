@@ -8,12 +8,11 @@ const editButton = profile.querySelector('.profile__button-edit');
 const addButton = document.querySelector('.profile__button-add');
 const formElement = document.querySelector('.popup__container');
 const newElem = document.querySelector('#newElem');
-const saveButton = formElement.querySelector('.popup__button_type_save');
-let inputName = formElement.querySelector('.popup__input_name');
-let inputDescription = formElement.querySelector('.popup__input_description');
-let profileTittle = profile.querySelector('.profile__tittle');
-let profileSubtittle = profile.querySelector('.profile__subtittle');
-const elem = document.querySelector('#elementCard').content;
+const inputName = formElement.querySelector('.popup__input_name');
+const inputDescription = formElement.querySelector('.popup__input_description');
+const profileTittle = profile.querySelector('.profile__tittle');
+const profileSubtittle = profile.querySelector('.profile__subtittle');
+const cardListContainer = document.querySelector('#elementCard').content;
 const element = document.querySelector('.element');
 const popupCardPlace = document.querySelector('.popup__input_place');
 const popupCardLink = document.querySelector('.popup__input_link');
@@ -21,43 +20,43 @@ const popupImg = document.querySelector('#image');
 const popupImgFull = document.querySelector('.popup__image_fullscreen');
 const popupImgText = document.querySelector('.popup__image_text');
 
-function openPopup(popup) {
+function openClosePopup(popup) {
   popup.classList.toggle('popup_opened')
 }
 
 function textAdd() {
-  let textTittle = profileTittle.textContent;
-  let textSubtittle = profileSubtittle.textContent;
+  const textTittle = profileTittle.textContent;
+  const textSubtittle = profileSubtittle.textContent;
   inputName.value = `${textTittle}`;
   inputDescription.value = `${textSubtittle}`;
 }
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  let inputNameAdd = inputName.value;
-  let inputDescriptionAdd = inputDescription.value;
+  const inputNameAdd = inputName.value;
+  const inputDescriptionAdd = inputDescription.value;
   profileTittle.textContent = `${inputNameAdd}`;
   profileSubtittle.textContent = `${inputDescriptionAdd}`;
-  openPopup(popupEdit);
+  openClosePopup(popupEdit);
 }
 const openImage = (event) => {
   popupImgFull.src = event.target.src;
   popupImgText.textContent = event.target.alt;
-  openPopup(popupImg);
+  openClosePopup(popupImg);
 };
 
 const like = (evt) => {
   evt.target.classList.toggle('card__button-like_active');
 };
 
-const deleteCard = function (cardCopy, cardLike, cardImage) {
-  cardLike.removeEventListener('click', cardLike);
-  cardImage.removeEventListener('click', cardImage);
+const deleteCard = function (cardCopy) {
+  // cardLike.removeEventListener('click', cardLike);
+  // cardImage.removeEventListener('click', cardImage);
   cardCopy.remove();
 };
 
-function newCard(name, image) {
-  const cardCopy = elem.firstElementChild.cloneNode(true);
+function getNewCard(name, image) {
+  const cardCopy = cardListContainer.firstElementChild.cloneNode(true);
   const cardImage = cardCopy.querySelector('.card__image');
   const cardTitle = cardCopy.querySelector('.card__title');
   const cardLike = cardCopy.querySelector('.card__button-like');
@@ -67,29 +66,35 @@ function newCard(name, image) {
   cardTitle.textContent = name;
   cardLike.addEventListener('click', like);
   cardImage.addEventListener('click', openImage);
-  cardDelete.addEventListener('click', () => deleteCard(cardCopy, cardLike, cardImage), {
+  cardDelete.addEventListener('click', () => deleteCard(cardCopy), {
     once: true
   });
   return cardCopy;
 }
 
-const AddCards = function (item) {
-  element.append(newCard(item.name, item.link));
+const addCards = function (item) {
+  element.append(getNewCard(item.name, item.link));
 };
+// Ув. ревьюер, я не могу тут поставить prepend так как согласно ТЗ на эту работу, карточки должны
+// начинаться с первой в масииве, а так последняя карточка массива будет первой, что несоответствует заданию
 
-function NewAddForm(event) {
+function newAddForm(event) {
   event.preventDefault();
-  openPopup(popupAdd);
-  element.prepend(newCard(popupCardPlace.value, popupCardLink.value));
+  openClosePopup(popupAdd);
+  element.prepend(getNewCard(popupCardPlace.value, popupCardLink.value));
   popupCardPlace.value = '';
   popupCardLink.value = '';
 };
+function editPopup(){
+  openClosePopup(popupEdit);
+  textAdd();
+}
 
-initialCards.forEach(AddCards);
-editButton.addEventListener('click', () => openPopup(popupEdit) & textAdd());
-addButton.addEventListener('click', () => openPopup(popupAdd));
-newElem.addEventListener('submit', NewAddForm)
-closeEdit.addEventListener('click', () => openPopup(popupEdit));
-closeAdd.addEventListener('click', () => openPopup(popupAdd));
-closeImg.addEventListener('click', () => openPopup(popupImg));
+initialCards.forEach(addCards);
+editButton.addEventListener('click', editPopup);
+addButton.addEventListener('click', () => openClosePopup(popupAdd));
+newElem.addEventListener('submit', newAddForm)
+closeEdit.addEventListener('click', () => openClosePopup(popupEdit));
+closeAdd.addEventListener('click', () => openClosePopup(popupAdd));
+closeImg.addEventListener('click', () => openClosePopup(popupImg));
 formElement.addEventListener('submit', formSubmitHandler);
